@@ -1,0 +1,14 @@
+<!-- <form action="loginForm" method="post" (ngSubmit)="check(username.value,password.value)"> -->
+  <div class="container">
+    <b>Username</b>
+    <input #username type="text" placeholder="Enter Username" name="uname" required>
+
+    <b>Password</b>
+    <input #password type="password" placeholder="Enter Password" name="psw" required>
+
+    <button (click)="check(username.value,password.value)">Login</button>
+    <p id="wrong">Wrong password</p>
+   <!-- <button type=submit>Login</button>  This will be connected with DB-->
+  </div>
+
+<!-- </form> -->
