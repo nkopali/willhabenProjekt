@@ -20,6 +20,7 @@ export class UserLoginComponent implements OnInit {
   }
   check(username: string, password: string): void{
     this.db = data;
+
     if (this.db[0].username === username && this.db[0].password === password) { //check for valid usrname and password
       localStorage.setItem("UserLoggedIn","UserLoggedIn"); //adds to localstorage that the user logged in
       this.router.navigate(['/user-feed']);//navigate to next page

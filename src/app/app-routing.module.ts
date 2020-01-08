@@ -5,7 +5,7 @@ import {UserFeedComponent} from './user-feed/user-feed.component';
 import {AuthGuard} from './auth.guard';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/user-login', pathMatch: 'full'},//default page
+  {path: '', redirectTo: '/user-feed', pathMatch: 'full'},//default page
   {path: 'user-login', component: UserLoginComponent},
   {path:'user-feed', component:UserFeedComponent, canActivate:[AuthGuard]},
 
