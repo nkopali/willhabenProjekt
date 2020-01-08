@@ -1,3 +1,3 @@
 export const data: any[] = [
-  {username: 'nils', password: 'test'}
+  {username: 'nils', password: 'a'}
 ];

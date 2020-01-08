@@ -11,7 +11,7 @@ import { UserFeedComponent } from './user-feed/user-feed.component';
   declarations: [
     AppComponent,
     UserLoginComponent,
-    UserFeedComponent
+    UserFeedComponent,
   ],
   imports: [
     BrowserModule,
