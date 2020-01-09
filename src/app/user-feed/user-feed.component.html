@@ -1,1 +1,19 @@
-<p>user-feed works!</p>
+<nav>
+  <ul>
+    <li><a href="/user-feed">Home</a></li>
+    <li>Notifications</li>
+    <li style="float:right"><button class="logoutButton" (click)="clearCache()">Log out</button></li>
+  </ul>
+</nav>
+
+<div class="page">
+  <div class="center" *ngFor="let post of db">
+    <p>{{post.prodName}} </p>
+    <img src={{post.src}}>
+      <div class="seller" >
+        <p>Seller: {{post.owner}}</p>
+        <p>Number of Likes: {{post.likes}}</p>
+        <button class="likeButton" (click)="addLike(post.id)">Like</button>
+      </div>
+  </div>
+</div>
