@@ -6,12 +6,14 @@ import { UserLoginComponent } from './user-login/user-login.component';
 import { AppRoutingModule } from './app-routing.module';
 import {RouterModule} from '@angular/router';
 import { UserFeedComponent } from './user-feed/user-feed.component';
+import { UserSignupComponent } from './user-signup/user-signup.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserLoginComponent,
     UserFeedComponent,
+    UserSignupComponent,
   ],
   imports: [
     BrowserModule,

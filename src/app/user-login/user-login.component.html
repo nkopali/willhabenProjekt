@@ -7,6 +7,8 @@
     <input #password type="password" placeholder="Enter Password" name="psw" required>
 
     <button (click)="check(username.value,password.value)">Login</button>
+    <button (click)="redirect()">Sign up</button>
+
     <button (click)="clearCache()">clear cache--Test</button>
 
     <p id="wrong">Wrong password</p>
