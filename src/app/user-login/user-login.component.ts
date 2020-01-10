@@ -18,14 +18,20 @@ export class UserLoginComponent implements OnInit {
     localStorage.removeItem("UserLoggedIn");
     console.log("Cache cleared");
   }
+  redirect(){
+    console.log("Sign up")
+    this.router.navigate(['/user-signup']);
+  }
   check(username: string, password: string): void{
     this.db = data;
 
-    if (this.db[0].username === username && this.db[0].password === password) { //check for valid usrname and password
-      localStorage.setItem("UserLoggedIn","UserLoggedIn"); //adds to localstorage that the user logged in
-      this.router.navigate(['/user-feed']);//navigate to next page
-    } else{
-      document.getElementById('wrong').style.display = 'block';//if pass wrong display wrong password
+    for (let i = 0; i < this.db.length ; i++) {
+      if (this.db[i].username === username && this.db[i].password === password) { //check for valid usrname and password
+        localStorage.setItem("UserLoggedIn","UserLoggedIn"); //adds to localstorage that the user logged in
+        this.router.navigate(['/user-feed']);//navigate to next page
+      } else if(i === this.db.length){
+        document.getElementById('wrong').style.display = 'block';//if pass wrong display wrong password
+      }
     }
   }
 }
