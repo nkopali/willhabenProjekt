@@ -7,6 +7,7 @@ const cors = require('cors');
 
 const registerRoutes = require('./routes/register');
 const loginRoutes = require('./routes/login');
+const feedRoutes = require("./feed");
 
 
 
@@ -15,7 +16,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cors());
-app.get('/',(request, response) => response.redirect(''));
+app.get('/',(request, response) => response.redirect('/feed'));
 
 
 app.use("/register", registerRoutes);
@@ -29,4 +30,4 @@ db.initDb.then(() => {
 
 
 
-//test
+
