@@ -7,6 +7,8 @@ import { AppRoutingModule } from './app-routing.module';
 import {RouterModule} from '@angular/router';
 import { UserFeedComponent } from './user-feed/user-feed.component';
 import { UserSignupComponent } from './user-signup/user-signup.component';
+import {HttpClientModule} from '@angular/common/http';
+import { ServerService } from './server.service';
 
 @NgModule({
   declarations: [
@@ -17,10 +19,11 @@ import { UserSignupComponent } from './user-signup/user-signup.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     RouterModule
   ],
-  providers: [],
+  providers: [ServerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
