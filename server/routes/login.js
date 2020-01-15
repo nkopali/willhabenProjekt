@@ -9,14 +9,14 @@ router.use(bodyParser.urlencoded({extended: false}));
 
 router.post('/', (req, res) => {
   user = req.body.user;
-  pass = req.body.pass;
+  pwd = req.body.pwd;
 
   query = `SELECT *
          FROM users
          WHERE username = ?
-         AND userpassword = ?;`
+         AND password = ?;`;
 
-  connection.query(query, [user, pass], (err, row) => {
+  connection.query(query, [user, pwd], (err, row) => {
     if (err) {
       res.sendStatus(500);
     } else if (row.length === 0) {

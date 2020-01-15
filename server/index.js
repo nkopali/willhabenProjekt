@@ -21,6 +21,7 @@ app.get('/',(request, response) => response.redirect('/feed'));
 
 app.use("/register", registerRoutes);
 app.use("/login", loginRoutes);
+app.use("/feed",feedRoutes);
 
 db.initDb.then(() => {
   app.listen(cfg.server.port, () => {
