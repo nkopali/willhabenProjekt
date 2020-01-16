@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {data} from '../MockDataBase';
+import { ServerService } from '../server.service';
+import {HttpClient} from '@angular/common/http';
+
 @Component({
   selector: 'app-user-login',
   templateUrl: './user-login.component.html',
@@ -9,7 +12,7 @@ import {data} from '../MockDataBase';
 export class UserLoginComponent implements OnInit {
   private db: any[];
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private serverService: ServerService) { }
 
   ngOnInit() {
     document.getElementById('wrong').style.display = 'none';//don't display wrong pass at the beginning
@@ -23,15 +26,24 @@ export class UserLoginComponent implements OnInit {
     this.router.navigate(['/user-signup']);
   }
   check(username: string, password: string): void{
-    this.db = data;
 
-    for (let i = 0; i < this.db.length ; i++) {
+   /* for (let i = 0; i < this.db.length ; i++) {
       if (this.db[i].username === username && this.db[i].password === password) { //check for valid usrname and password
         localStorage.setItem("UserLoggedIn","UserLoggedIn"); //adds to localstorage that the user logged in
         this.router.navigate(['/user-feed']);//navigate to next page
-      } else if(i === this.db.length){
+      } else if(i === this.db.length-1){
         document.getElementById('wrong').style.display = 'block';//if pass wrong display wrong password
       }
-    }
+    }*/
+
+   const data = {
+     'user' : username,
+     'pass' : password
+   }
+
+   this.serverService.login(data).subscribe((data)=>{
+     console.log(data)
+   })
+
   }
 }

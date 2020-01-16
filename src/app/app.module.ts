@@ -8,6 +8,8 @@ import {RouterModule} from '@angular/router';
 import { UserFeedComponent } from './user-feed/user-feed.component';
 import { UserSignupComponent } from './user-signup/user-signup.component';
 import { MapComponent } from './map/map.component';
+import {HttpClientModule} from '@angular/common/http';
+import { ServerService } from './server.service';
 
 @NgModule({
   declarations: [
@@ -19,10 +21,11 @@ import { MapComponent } from './map/map.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     RouterModule
   ],
-  providers: [],
+  providers: [ServerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
