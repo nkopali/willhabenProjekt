@@ -11,7 +11,7 @@ input[type=text], input[type=password] {
   box-sizing: border-box;
 }
 
-button {
+input[type="button"] {
   background-color: blue;
   color: white;
   padding: 14px 20px;
@@ -23,7 +23,7 @@ button {
 }
 
 /* Add a hover effect for buttons */
-button:hover {
+input[type="button"]:hover {
   opacity: 0.8;
 }
 

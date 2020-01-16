@@ -4,7 +4,7 @@ import {Subject} from 'rxjs';
 
 @Injectable()
 export class ServerService {
-  baseurl = 'http://localhost:4200/';
+  baseurl = 'http://localhost:3306/';
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type' : 'application/json',
@@ -13,7 +13,7 @@ export class ServerService {
   loggedIn = false;
   name: string;
 
-  loggedInchanged = new Subject<Boolean>();     // creates a new observable
+  loggedInchanged = new Subject<boolean>();     // creates a new observable
 
   constructor(private http: HttpClient) { }
 
