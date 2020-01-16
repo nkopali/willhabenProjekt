@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import {RouterModule} from '@angular/router';
 import { UserFeedComponent } from './user-feed/user-feed.component';
 import { UserSignupComponent } from './user-signup/user-signup.component';
+import { MapComponent } from './map/map.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { UserSignupComponent } from './user-signup/user-signup.component';
     UserLoginComponent,
     UserFeedComponent,
     UserSignupComponent,
+    MapComponent,
   ],
   imports: [
     BrowserModule,
