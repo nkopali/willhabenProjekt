@@ -6,8 +6,8 @@
     <b>Password</b>
     <input #password type="password" placeholder="Enter Password" name="psw" required>
 
-    <input type="button" value="Login" (click)="check(username.value,password.value)">
-    <<input type="button" value="Sign up"  (click)="redirect()">
+    <button type="button" (click)="check(username.value,password.value)">Login</button>
+    <button type="button" (click)="redirect()">Sign up</button>
 
     <p id="wrong">Wrong password</p>
   </div>
