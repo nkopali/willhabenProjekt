@@ -38,7 +38,7 @@ export class UserLoginComponent implements OnInit {
 
    const data = {
      'user' : username,
-     'pass' : password
+     'pwd' : password
    }
 
    this.serverService.login(data).subscribe((data)=>{

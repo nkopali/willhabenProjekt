@@ -24,7 +24,7 @@ router.post('/', (req, res) => {
     } else if (row.length > 0) {
       res.json({message: 'User already exists!'})
     } else {
-      insertquery = `INSERT INTO users (username, password, surname, firstname,email)
+      insertquery = `INSERT INTO users (username, password, lastname, firstname,email)
       VALUES (?, ?, ?, ?, ?);`;
       connection.query(insertquery, [user, pass, lastname, firstname,email], (err) => {
         if (err) {

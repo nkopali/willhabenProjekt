@@ -4,7 +4,7 @@ import {Subject} from 'rxjs';
 
 @Injectable()
 export class ServerService {
-  baseurl = 'http://localhost:3306/';
+  baseurl = 'http://localhost:3000/';
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type' : 'application/json',
