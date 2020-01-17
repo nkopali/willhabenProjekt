@@ -22,7 +22,7 @@ export class UserLoginComponent implements OnInit {
     console.log("Cache cleared");
   }
   redirect(){
-    console.log("Sign up")
+    console.log("Sign up");
     this.router.navigate(['/user-signup']);
   }
   check(username: string, password: string): void{
@@ -39,11 +39,17 @@ export class UserLoginComponent implements OnInit {
    const data = {
      'user' : username,
      'pwd' : password
-   }
+   };
 
    this.serverService.login(data).subscribe((data)=>{
-     console.log(data)
-   })
+   //  console.log(data);
+     
+       localStorage.setItem("UserLoggedIn","UserLoggedIn"); //adds to localstorage that the user logged in
+       this.router.navigate(['/user-feed'])
 
+
+
+   },(error)=> (document.getElementById('wrong').style.display = 'block')
+   );
   }
 }

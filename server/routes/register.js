@@ -14,6 +14,8 @@ router.post('/', (req, res) => {
   firstname = req.body.firstname;
   email = req.body.email;
 
+
+
   query = `SELECT username
          FROM users
          WHERE username = ?`;
@@ -24,11 +26,10 @@ router.post('/', (req, res) => {
     } else if (row.length > 0) {
       res.json({message: 'User already exists!'})
     } else {
-      insertquery = `INSERT INTO users (username, password, lastname, firstname,email)
-      VALUES (?, ?, ?, ?, ?);`;
+      insertquery = `INSERT INTO users (username, password, lastname, firstname,email) VALUES (?, ?, ?, ?, ?);`;
       connection.query(insertquery, [user, pass, lastname, firstname,email], (err) => {
         if (err) {
-          res.sendStatus(500);
+          res.sendStatus(404);
         } else {
           res.status(200).json({message: "Success"});
         }
