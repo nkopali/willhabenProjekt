@@ -26,7 +26,7 @@ router.post('/', (req, res) => {
     } else {
       insertquery = `INSERT INTO users (username, password, surname, firstname,email)
       VALUES (?, ?, ?, ?, ?);`;
-      connection.query(insertquery, [user, pass, name, firstname,email], (err) => {
+      connection.query(insertquery, [user, pass, lastname, firstname,email], (err) => {
         if (err) {
           res.sendStatus(500);
         } else {

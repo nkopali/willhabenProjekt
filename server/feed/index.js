@@ -8,6 +8,9 @@ router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({extended:false}));
 
 router.get('/:id', checkAuth, showEventFeed);
+router.get('/:id', checkAuth, listOwnEvents);
+router.get('/:id', checkAuth, createEvent);
+
 
 
 
