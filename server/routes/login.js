@@ -1,6 +1,6 @@
 const Router = require('express').Router;
 const router = Router();
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
 const connection = require("../db").getDb();
 const jwt = require('jsonwebtoken');
 
