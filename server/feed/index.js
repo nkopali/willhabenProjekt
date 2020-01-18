@@ -7,10 +7,12 @@ const checkAuth = require('../checkAuth');
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({extended:false}));
 
-router.get('/:id', checkAuth, showEventFeed);
-router.get('/:id', checkAuth, listOwnEvents);
-router.get('/:id', checkAuth, createEvent);
-router.get('/:id',checkAuth, deleteEvent);
+router.get('/:id', showEventFeed);
+router.get('/ownEvents/:id', checkAuth, listOwnEvents);
+router.post('/:id', checkAuth, createEvent);
+router.delete('/:id',checkAuth, deleteEvent);
+router.put('/:id',checkAuth, updateEvent);
+
 
 
 

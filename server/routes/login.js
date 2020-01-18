@@ -8,15 +8,15 @@ router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({extended: false}));
 
 router.post('/', (req, res) => {
-  user = req.body.user;
-  pwd = req.body.pwd;
+  username = req.body.username;
+  password = req.body.password;
 
   query = `SELECT *
          FROM users
          WHERE username = ?
          AND password = ?;`;
 
-  connection.query(query, [user, pwd], (err, row) => {
+  connection.query(query, [username, password], (err, row) => {
     if (err) {
       res.sendStatus(500);
     } else if (row.length === 0) {

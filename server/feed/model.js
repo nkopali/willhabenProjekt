@@ -5,6 +5,8 @@ function showEventFeed(userId) {
 
   return new Promise((resolve, reject) => {
 
+    console.log("model");
+
     const query =
       `SELECT * from events
        WHERE userID != ?`;
