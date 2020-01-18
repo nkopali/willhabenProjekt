@@ -5,7 +5,7 @@ function showEventFeed(userId) {
 
   return new Promise((resolve, reject) => {
 
-    console.log("model");
+    console.log("model"+userId);
 
     const query =
       `SELECT * from events
@@ -22,7 +22,7 @@ function showEventFeed(userId) {
   });
 }
 
-function listOwnEvents(userId) {
+function listOwnEvents(userID) {
 
   return new Promise((resolve, reject) => {
 
@@ -30,7 +30,7 @@ function listOwnEvents(userId) {
       `SELECT * from events
        WHERE userID = ?`;
 
-    connection.query(query,[userId],(error, results)=>{
+    connection.query(query,[userID],(error, results)=>{
       if (error){
         reject(error)
       } else {

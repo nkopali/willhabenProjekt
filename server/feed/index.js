@@ -15,6 +15,4 @@ router.put('/:id',checkAuth, updateEvent);
 
 
 
-
-
 module.exports = router;

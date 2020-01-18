@@ -3,8 +3,8 @@ const jwt = require('jsonwebtoken');
 
 //Sends all foreign events to the client
 function showEventFeed(request, response) {
-  model.showEventFeed(request.userId).then(
-console.log("conroller"),
+  model.showEventFeed(request.body.userID).then(
+console.log("conroller"+request.body.userID),
     events => {
       if(events.length < 1){
         response.status(200).json({message:"No events found"});
@@ -19,7 +19,7 @@ console.log("conroller"),
 }
 
 function listOwnEvents(request, response) {
-  model.getFeed(request.userId).then(
+  model.listOwnEvents(request.body.userID).then(
     events => {
       if(events.length < 1){
         response.status(200).json({message:"No events found"});
@@ -36,7 +36,7 @@ function listOwnEvents(request, response) {
 function createEvent(request, response) {
 
   const event = {
-    userID : request.body.userId,
+    userID : request.body.userID,
     subject : request.body.subject,
     descrip : request.body.descrip,
     category : request.body.category,
@@ -46,7 +46,7 @@ function createEvent(request, response) {
   };
 
 
-  model.createEvent (event, request.userId).then(
+  model.createEvent (event, request.body.userID).then(
     event => response.status(200).json(event),
     error => response.status(500).json(error),
   );
@@ -54,10 +54,7 @@ function createEvent(request, response) {
 
 function deleteEvent (request,response){
 
-  const eventID = request.body.eventID;
-
-
-  model.deleteEvent(eventID,request.userId).then(
+  model.deleteEvent(request.body.eventID,request.body.userID).then(
     results => {
       response.status(200).json(results);
     },
@@ -76,7 +73,7 @@ function updateEvent(request, response) {
     longitude : request.body.longitude
 
   };
-  model.updateEvent(event,request.userId).then( // .body.???????
+  model.updateEvent(event,request.body.userID)(
     event => response.status(200).json(event),
     error => response.status(500).json(error),
   );
@@ -91,5 +88,4 @@ module.exports = {
   createEvent,
   deleteEvent,
   updateEvent
-
 };
