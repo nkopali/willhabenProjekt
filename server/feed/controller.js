@@ -65,6 +65,21 @@ function deleteEvent (request,response){
 
 }
 
+function updateEvent(request, response) {
+  const event = {
+    eventID : request.body.eventID,
+    subject : request.body.subject,
+    descrip : request.body.descrip,
+    category : request.body.category,
+    latitude : request.body.latitude,
+    longitude : request.body.longitude
+
+  };
+  model.updateEvent(event,request.userId).then( // .body.???????
+    event => response.status(200).json(event),
+    error => response.status(500).json(error),
+  );
+}
 
 
 
@@ -74,5 +89,6 @@ module.exports = {
   listOwnEvents,
   createEvent,
   deleteEvent,
+  updateEvent
 
 };

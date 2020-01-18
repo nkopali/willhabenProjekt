@@ -72,9 +72,26 @@ function deleteEvent(eventID, userID) {
   });
 }
 
+function updateEvent(event, userID) {
+  return new Promise((resolve, reject) => {
+
+    const query =
+      'UPDATE events SET subject = ?,descrip = ?,category = ?,latitude = ?,longitude = ?  WHERE eventID = ? AND userID = ? ';
+    connection.query(query,[event.subject, event.descrip, event.category, event.latitude, event.longitude, event.eventID,userID], (error, results) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(showEventFeed(userID));
+        }
+      },
+    );
+  });
+}
+
 module.exports = {
   showEventFeed,
   listOwnEvents,
   createEvent,
-  deleteEvent
+  deleteEvent,
+  updateEvent
 };
