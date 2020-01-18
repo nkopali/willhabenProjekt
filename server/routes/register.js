@@ -29,7 +29,7 @@ router.post('/', (req, res) => {
       insertquery = `INSERT INTO users (username, password, lastname, firstname,email) VALUES (?, ?, ?, ?, ?);`;
       connection.query(insertquery, [user, pass, lastname, firstname,email], (err) => {
         if (err) {
-          res.sendStatus(404);
+          res.sendStatus(500);
         } else {
           res.status(200).json({message: "Success"});
         }

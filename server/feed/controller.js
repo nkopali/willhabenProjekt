@@ -43,12 +43,26 @@ function createEvent(request, response) {
     longitude : request.body.longitude
 
   };
-  console.log(booking);
+
 
   model.createEvent (event, request.userId).then(
     event => response.status(200).json(event),
     error => response.status(500).json(error),
   );
+}
+
+function deleteEvent (request,response){
+
+  const eventID = request.body.eventID;
+
+
+  model.deleteEvent(eventID,request.userId).then(
+    results => {
+      response.status(200).json(results);
+    },
+    error => response.send(error),
+  );
+
 }
 
 
@@ -59,5 +73,6 @@ module.exports = {
   showEventFeed,
   listOwnEvents,
   createEvent,
+  deleteEvent,
 
 };

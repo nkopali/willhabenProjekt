@@ -10,6 +10,7 @@ router.use(bodyParser.urlencoded({extended:false}));
 router.get('/:id', checkAuth, showEventFeed);
 router.get('/:id', checkAuth, listOwnEvents);
 router.get('/:id', checkAuth, createEvent);
+router.get('/:id',checkAuth, deleteEvent);
 
 
 

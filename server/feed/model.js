@@ -39,7 +39,7 @@ function listOwnEvents(userId) {
   });
 }
 
-function createEvent(userId,event) {
+function createEvent(event,userID) {
 
   return new Promise((resolve, reject) => {
 
@@ -50,14 +50,31 @@ function createEvent(userId,event) {
       if (error){
         reject(error)
       } else {
-        resolve(listOwnEvents(userId));
+        resolve(listOwnEvents(userID));
       }
     });
 
   });
 }
+
+
+function deleteEvent(eventID, userID) {
+  return new Promise((resolve, reject) => {
+    const query =
+      'DELETE FROM events WHERE eventID = ? AND userID = ? ';
+    connection.query(query,[eventID,userID],(error, results)=>{
+      if (error){
+        reject(error)
+      } else {
+        resolve(showEventFeed(userID));
+      }
+    });
+  });
+}
+
 module.exports = {
   showEventFeed,
   listOwnEvents,
-  createEvent
+  createEvent,
+  deleteEvent
 };
