@@ -13,8 +13,11 @@ function showEventFeed(userId) {
 
     connection.query(query,[userId],(error, results)=>{
       if (error){
+        console.log("model query error");
         reject(error)
       } else {
+        console.log("model query resolve");
+        console.log(results.length);
         resolve(results);
       }
     });

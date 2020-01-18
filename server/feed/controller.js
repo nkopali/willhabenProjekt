@@ -3,9 +3,9 @@ const jwt = require('jsonwebtoken');
 
 //Sends all foreign events to the client
 function showEventFeed(request, response) {
+
   model.showEventFeed(request.body.userID).then(
-console.log("conroller"+request.body.userID),
-    events => {
+      events => {
       if(events.length < 1){
         response.status(200).json({message:"No events found"});
       }
