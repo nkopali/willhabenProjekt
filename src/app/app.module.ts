@@ -10,6 +10,8 @@ import { UserSignupComponent } from './user-signup/user-signup.component';
 import { MapComponent } from './map/map.component';
 import {HttpClientModule} from '@angular/common/http';
 import { ServerService } from './server.service';
+import { MessagesComponent } from './messages/messages.component';
+import {ButtonModule, FieldsetModule, InputTextModule, ScrollPanelModule} from 'primeng/primeng';
 
 @NgModule({
   declarations: [
@@ -18,12 +20,17 @@ import { ServerService } from './server.service';
     UserFeedComponent,
     UserSignupComponent,
     MapComponent,
+    MessagesComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    RouterModule
+    RouterModule,
+    ButtonModule,
+    InputTextModule,
+    FieldsetModule,
+    ScrollPanelModule,
   ],
   providers: [ServerService],
   bootstrap: [AppComponent]
