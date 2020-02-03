@@ -13,13 +13,23 @@ export class UserFeedComponent implements OnInit {
   private latitute: any;
   private longitude: any;
   location: string;
+  private test: string;
 
   constructor(private router: Router, private serverService: ServerService) { }
 
   ngOnInit() {
+    console.log("????????????");
+
+    console.log("!!!!!!!!!!!!!!!!!!!!!"+data);
+    this.test = localStorage.getItem("userID")
+
+    console.log(this.test);
+
+
     this.db = posts;
     this.serverService.showEventFeed(data=>{
       this.db = data;
+      this.test = localStorage.getItem("userID")
       //latitute = this.db.latitude;
       //longitude = this.db.longitude;
     })
@@ -36,7 +46,7 @@ export class UserFeedComponent implements OnInit {
   }
 
   searchFeed(searchText:string){
-    localStorage.setItem("searchInput", searchText)
+    localStorage.setItem("searchInput", searchText);
     this.router.navigate(['/search-feed'])
 
   }

@@ -11,9 +11,9 @@ const routes: Routes = [
   {path: '', redirectTo: '/user-feed', pathMatch: 'full'},//default page
   {path: 'user-login', component: UserLoginComponent},
   {path: 'user-signup', component: UserSignupComponent},
-  {path:'user-feed', component:UserFeedComponent, canActivate:[AuthGuard]},
-  {path:'add-post', component:AddPostComponent, canActivate:[AuthGuard]},
-  {path:'search-feed', component:SearchFeedComponent, canActivate:[AuthGuard]},
+  {path:'user-feed', component:UserFeedComponent},// canActivate:[AuthGuard]
+  {path:'add-post', component:AddPostComponent},
+  {path:'search-feed', component:SearchFeedComponent},
 
 ];
 @NgModule({

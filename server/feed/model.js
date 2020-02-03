@@ -1,17 +1,14 @@
 const connection = require("../db").getDb();
 
 
-function showEventFeed(userId) {
+function showEventFeed() {
 
   return new Promise((resolve, reject) => {
-
-    console.log("model"+userId);
-
     const query =
       `SELECT * from events
        `; //WHERE userID != ?
 
-    connection.query(query,[userId],(error, results)=>{
+    connection.query(query,(error, results)=>{
       if (error){
         console.log("model query error");
         reject(error)

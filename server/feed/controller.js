@@ -3,7 +3,7 @@ const model = require('./model');
 //Sends all foreign events to the client
 function showEventFeed(request, response) {
 
-  model.showEventFeed(request.body.userID).then(
+  model.showEventFeed().then(
       events => {
       if(events.length < 1){
         response.status(200).json({message:"No events found"});
