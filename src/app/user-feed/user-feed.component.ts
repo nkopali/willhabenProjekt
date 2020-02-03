@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import {posts} from '../MockDataBase';
+import {data, posts} from '../MockDataBase';
+import { ServerService } from '../server.service';
 
 @Component({
   selector: 'app-user-feed',
@@ -9,21 +10,34 @@ import {posts} from '../MockDataBase';
 })
 export class UserFeedComponent implements OnInit {
   private db: any[];
+  private latitute: any;
+  private longitude: any;
+  location: string;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private serverService: ServerService) { }
 
   ngOnInit() {
     this.db = posts;
+    this.serverService.showEventFeed(data=>{
+      this.db = data;
+      //latitute = this.db.latitude;
+      //longitude = this.db.longitude;
+    })
+
   }
 
-  addLike(id : any){
-    this.db[id].likes++;
+  addPost(){
+    this.router.navigate(['/add-post'])
   }
-
   clearCache(){
-    localStorage.removeItem("UserLoggedIn");
+    localStorage.clear();
     console.log("Cache cleared");
     this.router.navigate(['/user-login']);
   }
 
+  searchFeed(searchText:string){
+    localStorage.setItem("searchInput", searchText)
+    this.router.navigate(['/search-feed'])
+
+  }
 }
