@@ -9,7 +9,7 @@ function showEventFeed(userId) {
 
     const query =
       `SELECT * from events
-       WHERE userID != ?`;
+       `; //WHERE userID != ?
 
     connection.query(query,[userId],(error, results)=>{
       if (error){

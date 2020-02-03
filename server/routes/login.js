@@ -23,7 +23,7 @@ router.post('/', (req, res) => {
       res.status(400).json({message: "User oder Password falsch."})
     } else {
       let userdata = {
-        id: row[0].Id,
+        id: row[0].userID,
         username: row[0].username,
       };
 
@@ -31,17 +31,14 @@ router.post('/', (req, res) => {
         if (err) {
           res.sendStatus(500);
         } else {
-          res.status(200).json({token});
+          res.status(200).json(userdata.id);
+          console.log(userdata.id);
         }
       });
     }
   });
 });
- router.get ("/test", (req, res) => {
-   console.log("test");
 
-   res.status(200).json({message:"test"});
- });
 
 
 module.exports = router;

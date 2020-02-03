@@ -9,6 +9,8 @@ import { UserFeedComponent } from './user-feed/user-feed.component';
 import { UserSignupComponent } from './user-signup/user-signup.component';
 import {HttpClientModule} from '@angular/common/http';
 import { ServerService } from './server.service';
+import {AddPostComponent} from './add-post/add-post.component';
+import {SearchFeedComponent} from './search-feed/search-feed.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import { ServerService } from './server.service';
     UserLoginComponent,
     UserFeedComponent,
     UserSignupComponent,
+    AddPostComponent,
+    SearchFeedComponent
   ],
   imports: [
     BrowserModule,

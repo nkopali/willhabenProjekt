@@ -9,7 +9,7 @@ router.use(bodyParser.urlencoded({extended:false}));
 
 router.get('/', showEventFeed);
 router.get('/ownEvents/', checkAuth, listOwnEvents);
-router.post('/', checkAuth, createEvent);
+router.post('/', createEvent);
 router.delete('/',checkAuth, deleteEvent);
 router.put('/',checkAuth, updateEvent);
 

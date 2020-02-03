@@ -23,10 +23,11 @@ export class UserSignupComponent implements OnInit {
       'lastname': lastname,
       'firstname': firstname,
       'email':email
-    }
+    };
 
     this.serverService.register(data).subscribe((data)=>{
       console.log(data);
+      this.router.navigate(['/user-login']);
     })
 
     /*
