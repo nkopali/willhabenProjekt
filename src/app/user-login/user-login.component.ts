@@ -27,29 +27,30 @@ export class UserLoginComponent implements OnInit {
   }
   check(username: string, password: string): void{
 
-    for (let i = 0; i < this.db.length ; i++) {
+   /* for (let i = 0; i < this.db.length ; i++) {
       if (this.db[i].username === username && this.db[i].password === password) { //check for valid usrname and password
         localStorage.setItem("UserLoggedIn","UserLoggedIn"); //adds to localstorage that the user logged in
         this.router.navigate(['/user-feed']);//navigate to next page
       } else if(i === this.db.length-1){
         document.getElementById('wrong').style.display = 'block';//if pass wrong display wrong password
       }
-    }
-/*
+    }*/
+
    const data = {
-     'user' : username,
-     'pwd' : password
+     'username' : username,
+     'password' : password
    };
 
    this.serverService.login(data).subscribe((data)=>{
-   //  console.log(data);
+   //  console.log(data);;
 
-       localStorage.setItem("UserLoggedIn","UserLoggedIn"); //adds to localstorage that the user logged in
+       //localStorage.setItem("UserLoggedIn","UserLoggedIn"); //adds to localstorage that the user logged in
+       localStorage.setItem("userID",data.toString());
        this.router.navigate(['/user-feed'])
 
 
 
    },(error)=> (document.getElementById('wrong').style.display = 'block')
-   );*/
+   );
   }
 }

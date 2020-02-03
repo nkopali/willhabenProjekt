@@ -7,12 +7,10 @@ import { AppRoutingModule } from './app-routing.module';
 import {RouterModule} from '@angular/router';
 import { UserFeedComponent } from './user-feed/user-feed.component';
 import { UserSignupComponent } from './user-signup/user-signup.component';
-import { MapComponent } from './map/map.component';
 import {HttpClientModule} from '@angular/common/http';
 import { ServerService } from './server.service';
-import { MessagesComponent } from './messages/messages.component';
-import {ButtonModule, FieldsetModule, InputTextModule, ScrollPanelModule} from 'primeng/primeng';
-import { AddPostComponent } from './add-post/add-post.component';
+import {AddPostComponent} from './add-post/add-post.component';
+import {SearchFeedComponent} from './search-feed/search-feed.component';
 
 @NgModule({
   declarations: [
@@ -20,19 +18,14 @@ import { AddPostComponent } from './add-post/add-post.component';
     UserLoginComponent,
     UserFeedComponent,
     UserSignupComponent,
-    MapComponent,
-    MessagesComponent,
     AddPostComponent,
+    SearchFeedComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    RouterModule,
-    ButtonModule,
-    InputTextModule,
-    FieldsetModule,
-    ScrollPanelModule,
+    RouterModule
   ],
   providers: [ServerService],
   bootstrap: [AppComponent]

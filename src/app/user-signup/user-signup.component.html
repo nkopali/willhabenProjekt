@@ -1,0 +1,17 @@
+<form>
+<div class="container">
+  <b>Firstname</b>
+  <input #firstname type="text" placeholder="Enter firstname" name="uname" required>
+  <b>Lastname</b>
+  <input #lastname type="text" placeholder="Enter lastname" name="uname" required>
+  <b>Username</b>
+  <input #username type="text" placeholder="Enter Username" name="uname" required>
+  <b>Email</b>
+  <input #email type="text" placeholder="Enter email" name="uname" required>
+  <b>Password</b>
+  <input #password type="password" placeholder="Enter Password" name="psw" required>
+
+  <button type="button" (click)="signup(username.value,password.value,firstname.value,lastname.value,email.value)">Sign up</button>
+
+</div>
+</form>
