@@ -1,5 +1,4 @@
 const model = require('./model');
-const jwt = require('jsonwebtoken');
 
 //Sends all foreign events to the client
 function showEventFeed(request, response) {
