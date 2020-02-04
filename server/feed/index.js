@@ -8,10 +8,10 @@ router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({extended:false}));
 
 router.get('/', showEventFeed);
-router.get('/ownEvents/', checkAuth, listOwnEvents);
+router.get('/ownEvents/:id', listOwnEvents);
 router.post('/', createEvent);
-router.delete('/',checkAuth, deleteEvent);
-router.put('/',checkAuth, updateEvent);
+router.delete('/', deleteEvent);
+router.put('/', updateEvent);
 
 
 

@@ -18,12 +18,18 @@ function showEventFeed(request, response) {
 }
 
 function listOwnEvents(request, response) {
-  model.listOwnEvents(request.body.userID).then(
+  model.listOwnEvents(request.params.id).then(
+
     events => {
       if(events.length < 1){
+        console.log("controller"+JSON.stringify(events)+"error");
+
         response.status(200).json({message:"No events found"});
       }
       else{
+        console.log("controller"+JSON.stringify(events)+"success");
+
+
         response.status(200).json(events);
       }
     },
@@ -62,7 +68,7 @@ function deleteEvent (request,response){
 
 }
 
-function updateEvent(request, response) {
+function updateEvent (request, response) {
   const event = {
     eventID : request.body.eventID,
     subject : request.body.subject,
@@ -72,7 +78,7 @@ function updateEvent(request, response) {
     longitude : request.body.longitude
 
   };
-  model.updateEvent(event,request.body.userID)(
+  model.updateEvent(event,request.body.userID).then(
     event => response.status(200).json(event),
     error => response.status(500).json(error),
   );
