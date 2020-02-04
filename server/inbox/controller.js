@@ -33,7 +33,7 @@ function sendMsg(request, response) {
 
 function deleteMsg (request,response){
 
-  model.deleteMsg(request.body.eventID,request.body.userID).then(
+  model.deleteMsg(request.body.msgID,request.body.userID).then(
     results => {
       response.status(200).json(results);
     },
