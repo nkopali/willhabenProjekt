@@ -15,7 +15,7 @@ function verifyToken(req, res, next) {
       if (err) {
         response.sendStatus(401);
       } else {
-        req.userId = authData.id;
+        req.userID = authData.id;
         next();
       }
     });

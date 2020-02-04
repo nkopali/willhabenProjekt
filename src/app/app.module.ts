@@ -10,6 +10,8 @@ import { UserSignupComponent } from './user-signup/user-signup.component';
 import { MapComponent } from './map/map.component';
 import {HttpClientModule} from '@angular/common/http';
 import { ServerService } from './server.service';
+import {AddPostComponent} from './add-post/add-post.component';
+import {SearchFeedComponent} from './search-feed/search-feed.component';
 import { MessagesComponent } from './messages/messages.component';
 import {ButtonModule, FieldsetModule, InputTextModule, ScrollPanelModule} from 'primeng/primeng';
 
@@ -19,6 +21,8 @@ import {ButtonModule, FieldsetModule, InputTextModule, ScrollPanelModule} from '
     UserLoginComponent,
     UserFeedComponent,
     UserSignupComponent,
+    AddPostComponent,
+    SearchFeedComponent
     MapComponent,
     MessagesComponent,
   ],
