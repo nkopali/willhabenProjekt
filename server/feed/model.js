@@ -9,7 +9,7 @@ function showEventFeed() {
 
     connection.query(query,(error, results)=>{
       if (error){
-        console.log("model query error");
+
         reject(error)
       } else {
 
@@ -46,9 +46,9 @@ function createEvent(event,userID) {
   return new Promise((resolve, reject) => {
 
     const query =
-      `INSERT INTO events (userID,subject,descrip,category,latitude,longitude) VALUES (?,?,?,?,?,?)`;
+      `INSERT INTO events (userID,username,subject,descrip,category,latitude,longitude) VALUES (?,?,?,?,?,?)`;
 
-    connection.query(query,[event.userID,event.subject,event.descrip,event.category,event.latitude,event.longitude],(error, results)=>{
+    connection.query(query,[event.username,event.userID,event.subject,event.descrip,event.category,event.latitude,event.longitude],(error, results)=>{
       if (error){
         reject(error)
       } else {
@@ -78,10 +78,9 @@ function updateEvent(event, userID) {
   return new Promise((resolve, reject) => {
 
     const query =
-      'UPDATE events SET subject = ?,descrip = ?,category = ?,latitude = ?,longitude = ?  WHERE eventID = ? AND userID = ? ';
-    connection.query(query,[event.subject, event.descrip, event.category, event.latitude, event.longitude, event.eventID,userID], (error, results) => {
+      'UPDATE events SET username = ?,subject = ?,descrip = ?,category = ?,latitude = ?,longitude = ?  WHERE eventID = ? AND userID = ? ';
+    connection.query(query,[event.username,event.subject, event.descrip, event.category, event.latitude, event.longitude, event.eventID,userID], (error, results) => {
         if (error) {
-          console.log("error"),
           reject(error);
         } else {
           resolve(showEventFeed(userID));

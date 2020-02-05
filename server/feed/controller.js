@@ -42,6 +42,7 @@ function createEvent(request, response) {
 
   const event = {
     userID : request.body.userID,
+    username : request.body.username,
     subject : request.body.subject,
     descrip : request.body.descrip,
     category : request.body.category,
@@ -71,6 +72,7 @@ function deleteEvent (request,response){
 function updateEvent (request, response) {
   const event = {
     eventID : request.body.eventID,
+    username : request.body.username,
     subject : request.body.subject,
     descrip : request.body.descrip,
     category : request.body.category,

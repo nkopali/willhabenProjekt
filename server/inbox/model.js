@@ -42,12 +42,26 @@ function sendMsg(msg,userID) {
 function deleteMsg(msgID, userID) {
   return new Promise((resolve, reject) => {
     const query =
-      'DELETE FROM events WHERE eventID = ? AND userID = ? ';
-    connection.query(query,[msgID,userID],(error, results)=>{
+      'DELETE FROM messages WHERE msgID = ? AND senderID = -1;';
+    connection.query(query,[msgID,userID,userID],(error, results)=>{
       if (error){
         reject(error)
+      } else if (results.affectedRows === 0){
+
+        return new Promise((resolve, reject) => {
+          const query =
+            'update messages set senderID = -1 where msgID = ?;';
+          connection.query(query,[msgID],(error, results)=>{
+            if (error){
+              reject(error)}
+             else {
+                resolve(showMsgs(userID));
+            }
+          });
+        });
+
       } else {
-        resolve(showEventFeed(userID));
+        resolve(showMsgs(userID));
       }
     });
   });
