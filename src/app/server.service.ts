@@ -10,6 +10,7 @@ export class ServerService {
       'Content-Type' : 'application/json',
     })
   };
+
   loggedIn = false;
   name: string;
 
@@ -30,7 +31,11 @@ export class ServerService {
   }
 
   createEvent(data) {
-    return this.http.post(this.baseurl + 'feed',data, this.httpOptions);
+    return this.http.post(this.baseurl + 'feed', data, this.httpOptions);
+  }
+
+  updateEvent(data) {
+    return this.http.put(this.baseurl + 'feed', data, this.httpOptions);
   }
 
 }

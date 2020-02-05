@@ -30,12 +30,10 @@ export class AddPostComponent implements OnInit {
    this.serverService.createEvent(data).subscribe((data)=>{
      console.log(data)
    })
+    this.router.navigate(['/user-feed'])
+
   }
 
-  searchFeed(searchText:string){
-    localStorage.setItem("searchInput", searchText)
-    this.router.navigate(['/search-feed'])
-  }
 
   clearCache(){
     localStorage.clear();

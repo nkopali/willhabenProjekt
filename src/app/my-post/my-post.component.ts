@@ -1,17 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import { ServerService } from '../server.service';
+import {ServerService} from '../server.service';
 
 @Component({
-  selector: 'app-user-feed',
-  templateUrl: './user-feed.component.html',
-  styleUrls: ['./user-feed.component.css']
+  selector: 'app-my-post',
+  templateUrl: './my-post.component.html',
+  styleUrls: ['./my-post.component.css']
 })
-export class UserFeedComponent implements OnInit {
-  private db: any;
+
+export class MyPostComponent implements OnInit {
+  private db: Object;
   location: string;
   private searchText: string;
   userID: string;
+  private temp: any;
+  private size: number = 0;
+  private smth: any[];
 
   constructor(private router: Router, private serverService: ServerService) { }
 
@@ -20,7 +24,13 @@ export class UserFeedComponent implements OnInit {
 
 
     this.serverService.showEventFeed(this.userID).subscribe(data =>{
-      this.db = data;
+        this.temp = data;
+        var posts = this.temp.filter((post)=>{
+          if(post.userid.toString() === this.userID){
+            return post
+          }
+        })
+        this.db = posts
     })
 
   }
@@ -38,4 +48,9 @@ export class UserFeedComponent implements OnInit {
     console.log(localStorage.getItem("userID"))
   }
 
+  modify(itemid : any) {
+    localStorage.setItem("itemID",itemid.toString())
+    this.router.navigate(['/modify'])
+
+  }
 }

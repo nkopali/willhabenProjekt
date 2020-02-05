@@ -1,0 +1,39 @@
+<nav>
+  <ul>
+    <li><a href="/user-feed">Home</a></li>
+    <li><a href="/my-post">My Posts</a></li>
+    <div class="search-container">
+      <input type="text" [(ngModel)]="searchText" placeholder="Search text">
+    </div>
+    <li style="float:right"><button class="logoutButton" (click)="clearCache()">Log out</button></li>
+    <li style="float:right"><button class="logoutButton" (click)="printUsr()">Print user</button></li>
+
+  </ul>
+</nav>
+
+<div class="page">
+  <div class="center" *ngFor="let post of db | filter: searchText">
+    <p>{{post.subject}} </p>
+    <div class="seller" >
+      <p>Seller: {{post.username}}</p>
+      <p>Description: {{post.descrip}}</p>
+      <p>Category: {{post.category}}</p>
+
+      <!--<div [inerHTML]="location"]>{{location}}</div>-->
+    </div>
+  </div>
+</div>
+
+<form>
+  <div class="addContainer">
+    <b>Subject</b>
+    <input #subject type="text" placeholder="Enter Subject" name="uname" required>
+    <b>Description</b>
+    <input #description type="text" placeholder="Enter Description" name="uname" required>
+    <b>Category</b>
+    <input #category type="text" placeholder="Enter Category" name="uname" required>
+
+    <button type="button" (click)="save(subject.value,description.value,category.value)">Save</button>
+
+  </div>
+</form>

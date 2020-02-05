@@ -5,13 +5,17 @@ import {UserFeedComponent} from './user-feed/user-feed.component';
 import {AuthGuard} from './auth.guard';
 import {UserSignupComponent} from './user-signup/user-signup.component';
 import {AddPostComponent} from '../app/add-post/add-post.component';
+import {MyPostComponent} from '../app/my-post/my-post.component'
+import {ModifyComponent} from './modify/modify.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/user-feed', pathMatch: 'full'},//default page
   {path: 'user-login', component: UserLoginComponent},
   {path: 'user-signup', component: UserSignupComponent},
-  {path:'user-feed', component:UserFeedComponent},// canActivate:[AuthGuard]
-  {path:'add-post', component:AddPostComponent},
+  {path:'user-feed', component:UserFeedComponent,canActivate:[AuthGuard]},
+  {path:'add-post', component:AddPostComponent,canActivate:[AuthGuard]},
+  {path:'my-post', component:MyPostComponent,canActivate:[AuthGuard]},
+  {path:'modify', component:ModifyComponent,canActivate:[AuthGuard]},
 
 ];
 @NgModule({

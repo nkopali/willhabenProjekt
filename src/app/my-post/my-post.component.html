@@ -14,12 +14,14 @@
 <div class="page">
   <div class="center" *ngFor="let post of db | filter: searchText">
     <p>{{post.subject}} </p>
-      <div class="seller" >
-        <p>Seller: {{post.username}}</p>
-        <p>Description: {{post.descrip}}</p>
-        <p>Category: {{post.category}}</p>
-        <!--<div [inerHTML]="location"]>{{location}}</div>-->
-      </div>
+    <div class="seller" >
+      <p>Seller: {{post.username}} </p>
+      <p>Description: {{post.descrip}}</p>
+      <p>Category: {{post.category}}</p>
+      <button type="button" class="addButton" (click)="modify(post.itemID)">Modify</button>
+
+      <!--<div [inerHTML]="location"]>{{location}}</div>-->
+    </div>
   </div>
 </div>
 

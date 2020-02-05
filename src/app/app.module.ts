@@ -12,6 +12,8 @@ import { ServerService } from './server.service';
 import {AddPostComponent} from './add-post/add-post.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { FilterPipe } from './filter.pipe';
+import { MyPostComponent } from './my-post/my-post.component';
+import { ModifyComponent } from './modify/modify.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { FilterPipe } from './filter.pipe';
     UserFeedComponent,
     UserSignupComponent,
     AddPostComponent,
-    FilterPipe
+    FilterPipe,
+    MyPostComponent,
+    ModifyComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,7 +32,8 @@ import { FilterPipe } from './filter.pipe';
     AppRoutingModule,
     RouterModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+
   ],
   providers: [ServerService],
   bootstrap: [AppComponent]

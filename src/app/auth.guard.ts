@@ -7,10 +7,13 @@ import { Observable } from 'rxjs';
 })
 export class AuthGuard implements CanActivate {
 
+  private user: string;
+
   constructor(private router: Router) { }
 
   canActivate(next: ActivatedRouteSnapshot,state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if(localStorage.getItem('UserLoggedIn')==='UserLoggedIn') { //check if user already logged on
+    this.user=localStorage.getItem('userID')
+    if(this.user!==null) { //check if user already logged on
       //this.router.navigate(['/user-feed']);
       console.log("User logged in");
       return true;
