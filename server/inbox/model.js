@@ -25,13 +25,13 @@ function sendMsg(msg,userID) {
   return new Promise((resolve, reject) => {
 
     const query =
-      `INSERT INTO messages (senderID,receiverID,text) VALUES (?,?,?)`;
+      `INSERT INTO messages (senderID,receiverID,text,timestamp) VALUES (?,?,?,?)`;
 
-    connection.query(query,[msg.senderID,msg.receiverID,msg.text],(error, results)=>{
+    connection.query(query,[msg.senderID,msg.receiverID,msg.text,msg.timestamp],(error, results)=>{
       if (error){
         reject(error)
       } else {
-        resolve(showMsgs(userID));
+        resolve(showMsgs(msg.senderID));
       }
     });
 

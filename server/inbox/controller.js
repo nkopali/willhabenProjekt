@@ -21,7 +21,8 @@ function sendMsg(request, response) {
   const msg = {
     senderID: request.body.senderID,
     receiverID: request.body.receiverID,
-    text : request.body.text
+    text : request.body.text,
+    timestamp : request.body.timestamp
 
   };
 

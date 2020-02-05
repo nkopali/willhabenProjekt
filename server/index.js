@@ -8,6 +8,7 @@ const cors = require('cors');
 const registerRoutes = require("./routes/register");
 const loginRoutes = require("./routes/login");
 const feedRoutes = require("./feed");
+const inboxRoutes = require("./inbox");
 
 
 
@@ -22,6 +23,7 @@ app.get('/',(request, response) => response.redirect('/feed'));
 app.use("/register", registerRoutes);
 app.use("/login", loginRoutes);
 app.use("/feed",feedRoutes);
+app.use ("/inbox",inboxRoutes);
 
 db.initDb.then(() => {
   app.listen(cfg.server.port, () => {
