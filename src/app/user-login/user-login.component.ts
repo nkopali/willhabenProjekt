@@ -42,9 +42,7 @@ export class UserLoginComponent implements OnInit {
    };
 
    this.serverService.login(data).subscribe((data)=>{
-   //  console.log(data);;
 
-       //localStorage.setItem("UserLoggedIn","UserLoggedIn"); //adds to localstorage that the user logged in
        localStorage.setItem("userID",data.toString());
        this.router.navigate(['/user-feed'])
 

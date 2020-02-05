@@ -10,7 +10,8 @@ import { UserSignupComponent } from './user-signup/user-signup.component';
 import {HttpClientModule} from '@angular/common/http';
 import { ServerService } from './server.service';
 import {AddPostComponent} from './add-post/add-post.component';
-import {SearchFeedComponent} from './search-feed/search-feed.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FilterPipe } from './filter.pipe';
 
 @NgModule({
   declarations: [
@@ -19,13 +20,15 @@ import {SearchFeedComponent} from './search-feed/search-feed.component';
     UserFeedComponent,
     UserSignupComponent,
     AddPostComponent,
-    SearchFeedComponent
+    FilterPipe
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [ServerService],
   bootstrap: [AppComponent]

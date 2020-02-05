@@ -5,7 +5,6 @@ import {UserFeedComponent} from './user-feed/user-feed.component';
 import {AuthGuard} from './auth.guard';
 import {UserSignupComponent} from './user-signup/user-signup.component';
 import {AddPostComponent} from '../app/add-post/add-post.component';
-import {SearchFeedComponent} from '../app/search-feed/search-feed.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/user-feed', pathMatch: 'full'},//default page
@@ -13,7 +12,6 @@ const routes: Routes = [
   {path: 'user-signup', component: UserSignupComponent},
   {path:'user-feed', component:UserFeedComponent},// canActivate:[AuthGuard]
   {path:'add-post', component:AddPostComponent},
-  {path:'search-feed', component:SearchFeedComponent},
 
 ];
 @NgModule({

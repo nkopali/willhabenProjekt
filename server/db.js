@@ -4,7 +4,7 @@ let mysql = require('mysql');
 let db;
 
 let initDb = new Promise((resolve, reject) => {
-    db = mysql.createConnection({
+  db = mysql.createConnection({
       host     : cfg.database.host,
       user     : cfg.database.user,
       password : cfg.database.password,
@@ -33,3 +33,4 @@ module.exports = {
     getDb,
     initDb
 };
+

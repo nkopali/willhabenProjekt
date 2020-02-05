@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import {data, posts} from '../MockDataBase';
 import { ServerService } from '../server.service';
 
 @Component({
@@ -9,29 +8,18 @@ import { ServerService } from '../server.service';
   styleUrls: ['./user-feed.component.css']
 })
 export class UserFeedComponent implements OnInit {
-  private db: any[];
-  private latitute: any;
-  private longitude: any;
+  private db: any;
   location: string;
   private test: string;
+  private searchText: string;
 
   constructor(private router: Router, private serverService: ServerService) { }
 
   ngOnInit() {
-    console.log("????????????");
 
-    console.log("!!!!!!!!!!!!!!!!!!!!!"+data);
-    this.test = localStorage.getItem("userID")
-
-    console.log(this.test);
-
-
-    this.db = posts;
-    this.serverService.showEventFeed(data=>{
+    this.serverService.showEventFeed(this.test).subscribe(data =>{
       this.db = data;
       this.test = localStorage.getItem("userID")
-      //latitute = this.db.latitude;
-      //longitude = this.db.longitude;
     })
 
   }
@@ -46,6 +34,7 @@ export class UserFeedComponent implements OnInit {
   }
 
   searchFeed(searchText:string){
+
     localStorage.setItem("searchInput", searchText);
     this.router.navigate(['/search-feed'])
 

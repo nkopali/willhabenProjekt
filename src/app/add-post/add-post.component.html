@@ -3,8 +3,8 @@
     <li><a href="/user-feed">Home</a></li>
     <li>Notifications</li>
     <div class="search-container">
-      <i style="float:center"><input #search type="text" class="search" placeholder="Search.."></i>
-      <button type="button" (click)="searchFeed(search.value)">Submit</button>
+      <input type="text" [(ngModel)]="searchText" placeholder="Search text">
+
     </div>
     <li style="float:right"><button class="logoutButton" (click)="clearCache()">Log out</button></li>
 

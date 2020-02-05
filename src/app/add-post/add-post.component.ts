@@ -9,13 +9,15 @@ import {ServerService} from '../server.service';
 })
 export class AddPostComponent implements OnInit {
   private username:any;
+  private searchText: string;
+
   constructor(private router: Router, private serverService: ServerService) { }
 
   ngOnInit() {
   }
 
   createPost(subject: string, descrip: string, category: string, location:string){
-    this.username = localStorage.getItem("userId");
+    this.username = localStorage.getItem("userID");
     const data = {
       userID : this.username,
       subject : subject,
