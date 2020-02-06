@@ -7,7 +7,7 @@ function showMsgs(userID) {
 
     const query =
       `SELECT * from messages
-       WHERE senderID = ? OR receiverID = ?`;
+       WHERE (senderID = ? AND senderstatus = 0) OR (receiverID = ? AND receiverstatus = 0) `;
 
     connection.query(query,[userID,userID],(error, results)=>{
       if (error){
@@ -42,30 +42,58 @@ function sendMsg(msg,userID) {
 function deleteMsg(msgID, userID) {
   return new Promise((resolve, reject) => {
     const query =
-      'DELETE FROM messages WHERE msgID = ? AND senderID = -1;';
-    connection.query(query,[msgID,userID,userID],(error, results)=>{
+      'select * from messages where msgID = ?';
+    connection.query(query,[msgID],(error, results)=>{
       if (error){
         reject(error)
-      } else if (results.affectedRows === 0){
+      }
+      else {
+        resolve(results);
+      }
+    });
 
+  }).then(results => {
+
+    if (results[0].senderID == userID && results[0].senderstatus == 0) {
         return new Promise((resolve, reject) => {
           const query =
-            'update messages set senderID = -1 where msgID = ?;';
+            'UPDATE messages SET senderstatus = 1 where msgID = ?';
           connection.query(query,[msgID],(error, results)=>{
             if (error){
-              reject(error)}
-             else {
-                resolve(showMsgs(userID));
+              reject(error)
+            }else {
+              resolve(showMsgs(userID));
             }
           });
         });
-
-      } else {
-        resolve(showMsgs(userID));
+  }else if (results[0].receiverID == userID && results[0].receiverstatus == 0) {
+        return new Promise((resolve, reject) => {
+          const query =
+            'UPDATE messages SET receiverstatus = 1 where msgID = ?';
+          connection.query(query,[msgID],(error, results)=>{
+            if (error){
+              reject(error)
+            }else {
+              resolve(showMsgs(userID));
+            }
+          });
+        });
+      }else {
+        return new Promise((resolve, reject) => {
+          const query =
+            'DELETE from  messages where msgID = ?';
+          connection.query(query,[msgID],(error, results)=>{
+            if (error){
+              reject(error)
+            }else {
+              resolve(showMsgs(userID));
+            }
+          });
+        });
       }
-    });
   });
 }
+
 
 
 module.exports = {
@@ -73,3 +101,4 @@ module.exports = {
   sendMsg,
   deleteMsg,
 };
+
