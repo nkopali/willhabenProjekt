@@ -7,9 +7,9 @@ const checkAuth = require('../checkAuth');
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({extended:false}));
 
-router.get('/all', getAllUsers);
-router.get('/:id', showMsgs);
-router.post('/', sendMsg);
-router.delete('/', deleteMsg);
+router.get('/all', checkAuth, getAllUsers);
+router.get('/:id', checkAuth, showMsgs);
+router.post('/',checkAuth,  sendMsg);
+router.delete('/', checkAuth, deleteMsg);
 
 module.exports = router;

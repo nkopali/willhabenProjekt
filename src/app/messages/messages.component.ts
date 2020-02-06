@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import {Message} from './Message';
 import {ServerService} from '../server.service';
 
@@ -8,11 +8,12 @@ import {ServerService} from '../server.service';
   styleUrls: ['./messages.component.css'],
   encapsulation: ViewEncapsulation.None,
 })
-export class MessagesComponent implements OnInit {
+export class MessagesComponent implements OnInit, OnDestroy {
   messages: Message[];
   messagesToShow: Message[] = [];
   users: any[];
   messageToSend: string;
+  interval;
   newM: string[] = [];
 
   clickedUser;
@@ -28,7 +29,7 @@ export class MessagesComponent implements OnInit {
 
     this.loadMessages();
 
-    setInterval(
+    this.interval = setInterval(
       () => this.loadMessages(), 5000
     );
   }
@@ -102,5 +103,9 @@ export class MessagesComponent implements OnInit {
     this.serverService.sendMessage(this.messageToSend, this.clickedUser + '');
     this.messageToSend = '';
     this.loadMessages();
+  }
+
+  ngOnDestroy(): void {
+    clearInterval(this.interval);
   }
 }
