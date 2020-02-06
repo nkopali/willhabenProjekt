@@ -1,28 +1,21 @@
-<nav>
-  <ul>
-    <li><a href="/user-feed">Home</a></li>
-    <li><a href="/my-post">My Posts</a></li>
-    <div class="search-container">
-      <input type="text" [(ngModel)]="searchText" placeholder="Search text">
-    </div>
-    <li style="float:right"><button class="logoutButton" (click)="clearCache()">Log out</button></li>
-    <li style="float:right"><button class="logoutButton" (click)="printUsr()">Print user</button></li>
-
-  </ul>
-</nav>
-
 <div class="page">
-  <div class="center" *ngFor="let post of db | filter: searchText">
-    <p>{{post.subject}} </p>
-    <div class="seller" >
-      <p>Seller: {{post.username}} </p>
-      <p>Description: {{post.descrip}}</p>
-      <p>Category: {{post.category}}</p>
-      <button type="button" class="addButton" (click)="modify(post.itemID)">Modify</button>
+  <p-card *ngFor="let post of db | filter: searchText">
+    <p-header>
+      {{post.subject}}
+    </p-header>
+    <div class="seller">
+      <p>Seller: {{post.owner}}</p>
+      <p>{{post.descrip}}</p>
+      <p>Number of Likes: {{post.likes}}</p>
 
-      <!--<div [inerHTML]="location"]>{{location}}</div>-->
     </div>
-  </div>
+    <p-footer>
+      <button pButton type="button" label="Modify" (click)="modify(post.itemID)"></button>
+      <button pButton type="button" label="Delete" (click)="delete(post.itemID)"></button>
+    </p-footer>
+  </p-card>
 </div>
 
-<button type="button" class="addButton" (click)="addPost()">Add post</button>
+<div class="ui-g-12">
+  <button style="width: 100%" pButton type="button" label="Add post" (click)="addPost()"></button>
+</div>

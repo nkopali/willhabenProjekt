@@ -1,0 +1,34 @@
+<fieldset>
+<div class="ui-g-12">
+  <div class="ui-g-2">
+    CONTACTS
+    <p-scrollPanel [style]="{width: '100%', height: '500px'}" styleClass="custom">
+      <div [ngStyle]="{'background-color': clickedUser===user.id ? 'lightblue' : 'transparent'}" (click)="userClicked(user.id)" *ngFor="let user of users" class="ui-g-12">
+        <p><strong>{{user.name}}</strong></p>
+        <i *ngIf="newM.indexOf(user.id)>=0" class="pi pi-eye"></i>
+        <hr>
+      </div>
+    </p-scrollPanel>
+  </div>
+
+  <div class="ui-g-10">
+    MESSAGES
+    <p-scrollPanel [style]="{width: '100%', height: '500px'}" styleClass="custom">
+    <div *ngFor="let message of messagesToShow" class="ui-g-12">
+      <div class="ui-g-2">
+        <p *ngIf="message.other"> von <strong>{{message.senderName}}</strong></p>
+        <p *ngIf="!message.other"> <strong>Ich</strong></p>
+
+      </div>
+      <div class="ui-g-8">{{message.text}}</div>
+    </div>
+  </p-scrollPanel>
+    <div class="ui-g-12">
+      <div class="ui-g-8">
+        <input type="text" pInputText [(ngModel)]="messageToSend" style="width: 100%">
+      </div>
+      <div class="ui-g-4"><button [disabled]="!clickedUser" pButton type="button" label="Senden" (click)="sendMessage()" ></button></div>
+    </div></div>
+</div>
+
+</fieldset>

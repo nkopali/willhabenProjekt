@@ -6,7 +6,7 @@ function showEventFeed(request, response) {
   model.showEventFeed().then(
       events => {
       if(events.length < 1){
-        response.status(200).json({message:"No events found"});
+        response.status(200).json([]);
       }
       else{
         response.status(200).json(events);
@@ -24,7 +24,7 @@ function listOwnEvents(request, response) {
       if(events.length < 1){
         console.log("controller"+JSON.stringify(events)+"error");
 
-        response.status(200).json({message:"No events found"});
+        response.status(200).json([]);
       }
       else{
         console.log("controller"+JSON.stringify(events)+"success");
@@ -59,7 +59,7 @@ function createEvent(request, response) {
 
 function deleteEvent (request,response){
 
-  model.deleteEvent(request.body.eventID,request.body.userID).then(
+  model.deleteEvent(request.params.id).then(
     results => {
       response.status(200).json(results);
     },
@@ -73,9 +73,7 @@ function updateEvent (request, response) {
     eventID : request.body.eventID,
     subject : request.body.subject,
     descrip : request.body.descrip,
-    category : request.body.category,
-    latitude : request.body.latitude,
-    longitude : request.body.longitude
+    category : request.body.category
 
   };
   model.updateEvent(event,request.body.userID).then(
@@ -83,6 +81,15 @@ function updateEvent (request, response) {
     error => response.status(500).json(error),
   );
 }
+
+function updateLikes (request, response) {
+
+  model.updateLikes(request.body.likes,request.body.eventID).then(
+    event => response.status(200).json(event),
+    error => response.status(500).json(error),
+  );
+}
+
 
 
 
@@ -92,5 +99,6 @@ module.exports = {
   listOwnEvents,
   createEvent,
   deleteEvent,
-  updateEvent
+  updateEvent,
+  updateLikes
 };

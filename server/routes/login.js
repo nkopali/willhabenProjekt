@@ -31,8 +31,7 @@ router.post('/', (req, res) => {
         if (err) {
           res.sendStatus(500);
         } else {
-          res.status(200).json(userdata.id);
-          console.log(userdata.id);
+          res.status(200).json({token, id: userdata.id});
         }
       });
     }

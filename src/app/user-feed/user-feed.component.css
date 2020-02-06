@@ -49,19 +49,25 @@ li a:hover, .logoutButton {
   float: left;
   padding: 4px;
 }
-img {
+.page img {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 60%;
+  width: 200px;
+  height: 200px;
 }
-.page{
+.page {
   list-style-type: none;
   margin: auto;
+  margin-top: 50px;
   width: 50%;
 
   padding: 18px;
   text-align: center;
+}
+
+.page .ui-card{
+    margin: 20px;
 }
 
 .search-container {

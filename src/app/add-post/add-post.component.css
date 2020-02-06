@@ -49,12 +49,6 @@ li a:hover, .logoutButton {
   float: left;
   padding: 4px;
 }
-img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 60%;
-}
 .page{
   list-style-type: none;
   margin: auto;
@@ -64,8 +58,27 @@ img {
   text-align: center;
 }
 
-.search-container {
-  float: center;
-  border: none;
-  cursor: pointer;
+form {
+  border: 3px solid #f1f1f1;
 }
+
+.addContainer input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid lightgrey;
+  box-sizing: border-box;
+}
+
+
+
+/* Add padding to containers */
+.container {
+  padding: 16px;
+}
+
+#wrong{
+  color: red;
+}
+

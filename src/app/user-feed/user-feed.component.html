@@ -1,27 +1,24 @@
-<nav>
-  <ul>
-    <li><a href="/user-feed">Home</a></li>
-    <li>Notifications</li>
-    <li><a href="/map">Events overview</a></li>
-    <li><a href="/messages">Messages</a></li>
-    <div class="search-container">
-      <i style="float:center"><input #search type="text" class="search" placeholder="Search.."></i>
-      <button type="button" (click)="searchFeed(search.value)">Submit</button>
-    </div>
-    <li style="float:right"><button class="logoutButton" (click)="clearCache()">Log out</button></li>
-  </ul>
-</nav>
-
+<div class="ui-g-12">
+  <input pInputText type="text" [(ngModel)]="searchText" placeholder="Search text">
+  <hr>
+</div>
 <div class="page">
-  <div class="center" *ngFor="let post of db">
-    <p>{{post.subject}} </p>
-      <div class="seller" >
-        <p>Seller: {{post.userID}}</p>
-        <p>Description: {{post.descrip}}</p>
-        <p>Category: {{post.category}}</p>
-        <!--<div [inerHTML]="location"]>{{location}}</div>-->
-      </div>
-  </div>
+  <p-card *ngFor="let post of db | filter: searchText">
+    <p-header>
+      {{post.subject}}
+    </p-header>
+    <div class="seller">
+      <p>Seller: {{post.owner}}</p>
+      <p>{{post.descrip}}</p>
+      <p>Number of Likes: {{post.likes}}</p>
+    </div>
+    <p-footer>
+      <button pButton type="button" label="Like" (click)="addLike(post.itemID)"></button>
+    </p-footer>
+  </p-card>
 </div>
 
-<button type="button" class="addButton" (click)="addPost()">Add post</button>
+
+<div class="ui-g-12">
+  <button style="width: 100%" pButton type="button" label="Add post" (click)="addPost()"></button>
+</div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {ServerService} from '../server.service';
 
@@ -9,7 +9,7 @@ import {ServerService} from '../server.service';
 })
 
 export class MyPostComponent implements OnInit {
-  private db: Object;
+  private db: object;
   location: string;
   private searchText: string;
   userID: string;
@@ -17,40 +17,40 @@ export class MyPostComponent implements OnInit {
   private size: number = 0;
   private smth: any[];
 
-  constructor(private router: Router, private serverService: ServerService) { }
+  constructor(private router: Router, private serverService: ServerService) {
+  }
 
   ngOnInit() {
-    this.userID = localStorage.getItem("userID")
+    this.userID = localStorage.getItem('userID');
 
 
-    this.serverService.showEventFeed(this.userID).subscribe(data =>{
-        this.temp = data;
-        var posts = this.temp.filter((post)=>{
-          if(post.userid.toString() === this.userID){
-            return post
-          }
-        })
-        this.db = posts
-    })
+    this.serverService.showEventFeed().then((data: any []) =>
+      this.db = data.filter((post) => post.userid.toString() === this.userID)
+    );
 
   }
 
-  addPost(){
-    this.router.navigate(['/add-post'])
+  addPost() {
+    this.router.navigate(['/home/add-post']);
   }
-  clearCache(){
+
+  clearCache() {
     localStorage.clear();
-    console.log("Cache cleared");
+    console.log('Cache cleared');
     this.router.navigate(['/user-login']);
   }
 
   printUsr() {
-    console.log(localStorage.getItem("userID"))
+    console.log(localStorage.getItem('userID'));
   }
 
-  modify(itemid : any) {
-    localStorage.setItem("itemID",itemid.toString())
-    this.router.navigate(['/modify'])
+  modify(itemid: any) {
+    localStorage.setItem('itemID', itemid.toString());
+    this.router.navigate(['/home/modify']);
 
+  }
+
+  delete(itemID: any) {
+    this.serverService.delete(itemID);
   }
 }

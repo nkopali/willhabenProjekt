@@ -10,8 +10,10 @@
   <input #email type="text" placeholder="Enter email" name="uname" required>
   <b>Password</b>
   <input #password type="password" placeholder="Enter Password" name="psw" required>
+<div class="ui-g-12">
+  <button type="button" pButton label="Sign up" (click)="signup(username.value,password.value,firstname.value,lastname.value,email.value)"></button>
 
-  <button type="button" (click)="signup(username.value,password.value,firstname.value,lastname.value,email.value)">Sign up</button>
+</div>
 
 </div>
 </form>

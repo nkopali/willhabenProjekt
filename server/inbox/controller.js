@@ -16,6 +16,22 @@ function showMsgs(request, response) {
   );
 }
 
+function getAllUsers(request, response) {
+  model.getUsers().then(
+    users => {
+      if(users.length < 1){
+        response.status(200).json({message:"No user found"});
+      }
+      else{
+        response.status(200).json(users);
+      }
+    },
+    error => response.send(error),
+
+  );
+}
+
+
 function sendMsg(request, response) {
 
   const msg = {
@@ -48,5 +64,6 @@ function deleteMsg (request,response){
 module.exports = {
   showMsgs,
   sendMsg,
+  getAllUsers,
   deleteMsg
 };

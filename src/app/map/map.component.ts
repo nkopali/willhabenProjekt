@@ -1,4 +1,5 @@
 import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {ServerService} from '../server.service';
 
 declare var H: any;
 
@@ -14,7 +15,7 @@ export class MapComponent implements OnInit, AfterViewInit {
   @ViewChild('map', {static: false})
   public mapElement: ElementRef;
 
-  public constructor() {
+  public constructor(private serverService: ServerService) {
     this.platform = new H.service.Platform({
       apikey: 'eWkBgZBzvJVTsr8jxFWQb6DdbA84TQn_yfxynvj8CUY'
     });
@@ -24,6 +25,11 @@ export class MapComponent implements OnInit, AfterViewInit {
   }
 
   public ngAfterViewInit() {
+   this.setMarkers();
+  }
+
+
+  async setMarkers() {
     const defaultLayers = this.platform.createDefaultLayers();
     console.log(defaultLayers);
     const map = new H.Map(
@@ -35,33 +41,21 @@ export class MapComponent implements OnInit, AfterViewInit {
       }
     );
     console.log(H);
-
-    // Create the default UI:
     const ui = H.ui.UI.createDefault(map, defaultLayers);
-    
-    // add marker to map
-    const geocodingParams = {
-      searchText: 'Neptunweg 3, 9020 Klagenfurt, Austria',
-    };
-    const onResult = (result) => {
-      const locations = result.Response.View[0].Result;
-      let position;
-      let marker;
-      // Add a marker for each location found
-      for (let i = 0; i < locations.length; i++) {
-        position = {
-          lat: locations[i].Location.DisplayPosition.Latitude,
-          lng: locations[i].Location.DisplayPosition.Longitude
-        };
-        marker = new H.map.Marker(position);
-        map.addObject(marker);
-        map.setCenter(position);
-        console.log(position);
-      }
-    };
-    const geocoder = this.platform.getGeocodingService();
-    geocoder.geocode(geocodingParams, onResult, (e) => {
-      alert(e);
-    });
+
+    const locations = await this.serverService.getLocations();
+    let position;
+    let marker;
+    // Add a marker for each location found
+    for (let i = 0; i < locations.length; i++) {
+      position = {
+        lat: locations[i].latitude,
+        lng: locations[i].longitude
+      };
+      marker = new H.map.Marker(position);
+      map.addObject(marker);
+      map.setCenter(position);
+      console.log(position);
+    }
   }
 }

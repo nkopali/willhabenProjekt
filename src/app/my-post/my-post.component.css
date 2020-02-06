@@ -59,7 +59,7 @@ img {
   list-style-type: none;
   margin: auto;
   width: 50%;
-
+  margin-top: 50px;
   padding: 18px;
   text-align: center;
 }
