@@ -1,19 +1,24 @@
-<nav>
-  <ul>
-    <li><a href="/user-feed">Home</a></li>
-    <li>Notifications</li>
-    <li style="float:right"><button class="logoutButton" (click)="clearCache()">Log out</button></li>
-  </ul>
-</nav>
-
+<div class="ui-g-12">
+  <input pInputText type="text" [(ngModel)]="searchText" placeholder="Search text">
+  <hr>
+</div>
 <div class="page">
-  <div class="center" *ngFor="let post of db">
-    <p>{{post.prodName}} </p>
-    <img src={{post.src}}>
-      <div class="seller" >
-        <p>Seller: {{post.owner}}</p>
-        <p>Number of Likes: {{post.likes}}</p>
-        <button class="likeButton" (click)="addLike(post.id)">Like</button>
-      </div>
-  </div>
+  <p-card *ngFor="let post of db | filter: searchText">
+    <p-header>
+      {{post.subject}}
+    </p-header>
+    <div class="seller">
+      <p>Seller: {{post.owner}}</p>
+      <p>{{post.descrip}}</p>
+      <p>Number of Likes: {{post.likes}}</p>
+    </div>
+    <p-footer>
+      <button pButton type="button" label="Like" (click)="addLike(post.itemID)"></button>
+    </p-footer>
+  </p-card>
+</div>
+
+
+<div class="ui-g-12">
+  <button style="width: 100%" pButton type="button" label="Add post" (click)="addPost()"></button>
 </div>

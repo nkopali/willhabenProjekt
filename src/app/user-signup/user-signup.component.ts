@@ -19,14 +19,15 @@ export class UserSignupComponent implements OnInit {
   signup(username: string, password: string, firstname:string, lastname:string, email:string) {
     const data = {
       'username':username,
-      'userpassword': password,
-      'surname': lastname,
+      'password': password,
+      'lastname': lastname,
       'firstname': firstname,
       'email':email
-    }
+    };
 
     this.serverService.register(data).subscribe((data)=>{
       console.log(data);
+      this.router.navigate(['/user-login']);
     })
 
     /*

@@ -1,0 +1,18 @@
+
+
+<form>
+  <div class="addContainer">
+    <b>Subject</b>
+    <input #subject type="text" placeholder="Enter Subject" name="uname" required>
+    <b>Description</b>
+    <input #description type="text" placeholder="Enter Description" name="uname" required>
+    <b>Category</b>
+    <input #category type="text" placeholder="Enter Category" name="uname" required>
+    <b>Location</b>
+    <input #location type="text" placeholder="Enter Location" name="uname" required>
+
+  </div>
+</form>
+<div class="ui-g-12">
+  <button style="width: 100%" pButton type="button" label="Add post" (click)="createPost(subject.value,description.value,category.value,location.value)"></button>
+</div>

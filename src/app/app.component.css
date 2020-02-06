@@ -1,2 +1,72 @@
-header h1{font-family: verdana; size: 2em; margin: 10px; display: inline-block; height: 60px}
-header {background-color: dodgerblue}
+header h1{font-family: verdana; size: 2em; margin: 10px; display: inline-block; height: 60px; color: #f1f1f1}
+header {background-color: rgb(0, 144, 163)
+}
+
+.ui-tabmenu-nav:last-child {
+  background-color: black;
+}
+.addButton {
+
+  padding: 10px;
+  display:block;
+  background-color: blue;
+  color: white;
+  text-align:center;
+  position: relative;
+  top: 10px;
+  right: 10px;
+
+}
+nav {background-color: skyblue}
+nav > ul {display: block;  list-style-type: none; padding: 10px; margin: 0; overflow: hidden}
+nav > ul > li {margin-right: 20px} /*space between menu*/
+
+li{
+  float: left;
+}
+
+.logoutButton {
+  background-color: skyblue;
+  border: none;
+  float: right;
+  border-radius: 90px;
+  color: white;
+}
+
+li a:hover, .logoutButton {
+  background-color: cornflowerblue;
+  padding: 3px;
+}
+
+.center {
+  border: 3px solid darkgrey;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+.seller{
+  border: 3px solid darkgrey;
+
+}
+.seller p:first-child{
+  float: left;
+}
+.seller .likeButton {
+  background-color: skyblue;
+  border: none;
+  float: left;
+  padding: 4px;
+}
+.page{
+  list-style-type: none;
+  margin: auto;
+  width: 50%;
+
+  padding: 18px;
+  text-align: center;
+}
+
+.search-container {
+  float: center;
+  border: none;
+  cursor: pointer;
+}

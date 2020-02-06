@@ -6,8 +6,13 @@
     <b>Password</b>
     <input #password type="password" placeholder="Enter Password" name="psw" required>
 
-    <button type="button" (click)="check(username.value,password.value)">Login</button>
-    <button type="button" (click)="redirect()">Sign up</button>
+    <div class="ui-g-12">
+      <button type="button" pButton label="Login" (click)="check(username.value,password.value)"></button>
+    </div>
+    <div class="ui-g-12">
+      <button type="button" pButton label="Sign up" (click)="redirect()"></button>
+    </div>
+
 
     <p id="wrong">Wrong password</p>
   </div>

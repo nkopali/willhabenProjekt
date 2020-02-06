@@ -13,9 +13,9 @@ function verifyToken(req, res, next) {
     // verify Token
     jwt.verify(token, 'secretkey', (err, authData) => {
       if (err) {
-        response.sendStatus(401);
+        res.sendStatus(401);
       } else {
-        req.userId = authData.id;
+        req.userID = authData.id;
         next();
       }
     });

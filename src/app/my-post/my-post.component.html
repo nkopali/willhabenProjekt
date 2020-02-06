@@ -1,0 +1,21 @@
+<div class="page">
+  <p-card *ngFor="let post of db | filter: searchText">
+    <p-header>
+      {{post.subject}}
+    </p-header>
+    <div class="seller">
+      <p>Seller: {{post.owner}}</p>
+      <p>{{post.descrip}}</p>
+      <p>Number of Likes: {{post.likes}}</p>
+
+    </div>
+    <p-footer>
+      <button pButton type="button" label="Modify" (click)="modify(post.itemID)"></button>
+      <button pButton type="button" label="Delete" (click)="delete(post.itemID)"></button>
+    </p-footer>
+  </p-card>
+</div>
+
+<div class="ui-g-12">
+  <button style="width: 100%" pButton type="button" label="Add post" (click)="addPost()"></button>
+</div>

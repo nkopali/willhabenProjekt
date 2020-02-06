@@ -1,0 +1,4 @@
+1. create database (Projekt/server/database.sql)
+2. run npm install in 'Projekt' directory
+3. run node index.js in 'Projekt/server'
+4. run ng serve in 'Projekt' directory
