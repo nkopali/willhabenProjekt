@@ -22,14 +22,9 @@ function listOwnEvents(request, response) {
 
     events => {
       if(events.length < 1){
-        console.log("controller"+JSON.stringify(events)+"error");
-
         response.status(200).json({message:"No events found"});
       }
       else{
-        console.log("controller"+JSON.stringify(events)+"success");
-
-
         response.status(200).json(events);
       }
     },
